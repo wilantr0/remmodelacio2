@@ -5,8 +5,8 @@ interface Props {
 }
 
 const { title, id } = Astro.props;
-import Image from "astro/components/Image.astro";
 import "bootstrap/dist/css/bootstrap.css";
+import NavBar from "../components/NavBar.astro";
 ---
 
 <!doctype html>
@@ -20,70 +20,7 @@ import "bootstrap/dist/css/bootstrap.css";
     <title>{title}</title>
   </head>
   <body>
-    <div class="container">
-      <header
-        class="d-flex flex-wrap flex-row align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-      >
-        <div class="col-md-3 mb-2 mb-md-0 -mr-10">
-          <a
-            href="/"
-            class="d-inline-flex link-body-emphasis text-decoration-none"
-          >
-            <Image src="/logo.jpg" alt="insti logo" width={68} height={60} /></a
-          >
-        </div>
-
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <a
-              id="home"
-              href="/"
-              class={`nav-link px-2 ${id == "home" ? "link-secondary" : ""}`}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a
-              id="servicios"
-              href="/servicios"
-              class={`nav-link px-2 ${id == "servicios" ? "link-secondary" : ""}`}
-            >
-              Servicios
-            </a>
-          </li>
-          <li>
-            <a
-              id="planes"
-              href="/planes"
-              class={`nav-link px-2 ${id == "planes" ? "link-secondary" : ""}`}
-            >
-              Planes
-            </a>
-          </li>
-          <li>
-            <a
-              id="about"
-              href="/about"
-              class={`nav-link px-2 ${id == "about" ? "link-secondary" : ""}`}
-            >
-              Sobre Nosotros
-            </a>
-          </li>
-        </ul>
-
-        <div class="col-md-3 text-end">
-          <a class="decoration-transparent" href="/login">
-            <button type="button" class="btn btn-outline-primary me-2">
-              Login
-            </button>
-          </a>
-          <a class="decoration-transparent" href="/login">
-            <button type="button" class="btn btn-primary"> Sign-up </button>
-          </a>
-        </div>
-      </header>
-    </div>
+    <NavBar id={id} />
+    <slot />
   </body>
-  <slot />
 </html>
