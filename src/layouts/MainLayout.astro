@@ -21,6 +21,8 @@ import NavBar from "../components/NavBar.astro";
   </head>
   <body>
     <NavBar id={id} />
-    <slot />
+    <main class="m-8">
+      <slot />
+    </main>
   </body>
 </html>
