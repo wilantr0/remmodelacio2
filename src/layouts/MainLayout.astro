@@ -20,7 +20,7 @@ import NavBar from "../components/NavBar.astro";
     <title>{title}</title>
   </head>
   <body>
-    <NavBar id={id} />
+    <NavBar client:load id={id} />
     <main class="m-8">
       <slot />
     </main>

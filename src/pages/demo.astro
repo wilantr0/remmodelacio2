@@ -1,0 +1,23 @@
+---
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
+---
+
+<html>
+  <body>
+    <button id="login">Login</button>
+    <button id="logout">Logout</button>
+
+    <script>
+      import { $ } from "../lib/dom-selector";
+      const { signIn, signOut } = await import("auth-astro/client");
+
+      const $login = $("#login");
+      const $logout = $("#logout");
+
+      $login.onclick = () => signIn("google");
+      $logout.onclick = () => signOut();
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@ interface Props {
 }
 
 const { id } = Astro.props;
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import "bootstrap/dist/css/bootstrap.css";
 ---
 
@@ -14,7 +14,13 @@ import "bootstrap/dist/css/bootstrap.css";
   >
     <div class="col-md-3 mb-2 mb-md-0 -mr-10">
       <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <Image src="/logo.jpg" alt="insti logo" width={68} height={60} /></a
+        <img
+          loading="lazy"
+          src="/logo.png"
+          alt="insti logo"
+          width={68}
+          height={60}
+        /></a
       >
     </div>
 
