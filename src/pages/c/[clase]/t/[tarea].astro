@@ -1,5 +1,6 @@
 ---
 import EntregarTarea from "../../../../components/EntregarTarea.astro";
+import Layout from "../../../../layouts/Layout.astro";
 const tareaInfo = [
   {
     name: "Math Task 1",
@@ -14,31 +15,38 @@ const tareaInfo = [
 const { tarea } = Astro.params;
 ---
 
-buen chico, {tarea}!
-<body>
-  <header>{tarea}</header>
-  {
-    tareaInfo.map((e) => {
-      return (
-        <>
-          <main>
-            <h1>{e.name}</h1>
-            <span>
-              {e.createdBy} · {e.createdAt}(
-              {e.createdAt === e.updatedAt ? "" : e.updatedAt})
-            </span>
-            <span>
-              {e.dueDate}
-              {e.dueHour}
-            </span>
-            <hr />
-            <p>{e.description}</p>
-          </main>
-          <aside>
-            <EntregarTarea />
-          </aside>
-        </>
-      );
-    })
-  }
-</body>
+<Layout title={tareaInfo[0].name}>
+  <body>
+    <header>{tarea}</header>
+    {
+      tareaInfo.map((e) => {
+        return (
+          <>
+            <main>
+              <h1>{e.name}</h1>
+              <section>
+                <span class="">
+                  {e.createdBy} · {e.createdAt} (Modified at:
+                  {e.createdAt === e.updatedAt ? "" : e.updatedAt})
+                </span>
+                <span>
+                  {e.dueDate}
+                  {e.dueHour}
+                </span>
+              </section>
+
+              <hr />
+              <p>{e.description}</p>
+            </main>
+            <aside>
+              <EntregarTarea
+                isAssigned={true}
+                docs={[{ name: "documento 1", url: "https://example.com/" }]}
+              />
+            </aside>
+          </>
+        );
+      })
+    }
+  </body>
+</Layout>
